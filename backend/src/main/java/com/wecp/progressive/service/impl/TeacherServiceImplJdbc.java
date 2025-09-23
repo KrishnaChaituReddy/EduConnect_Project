@@ -5,16 +5,20 @@ import java.util.*;
 
 import com.wecp.progressive.dao.TeacherDAO;
 import com.wecp.progressive.entity.Teacher;
+import com.wecp.progressive.service.TeacherService;
 
-public class TeacherServiceImplJdbc  {
+public class TeacherServiceImplJdbc implements TeacherService  {
     private TeacherDAO teacheDAO;
-
+          
+        public TeacherServiceImplJdbc(TeacherDAO teacheDAO) {
+        this.teacheDAO = teacheDAO;
+    }
         public List<Teacher> getAllTeachers()
     {
    List<Teacher>list=new ArrayList<>();
 return list;
     }
-    public int addTeacher(Teacher teacher)
+    public Integer addTeacher(Teacher teacher)
     {
         return-1;
     }
@@ -36,5 +40,6 @@ public Teacher getTeacherById(int teacherId)
 {
     return null;
 }
+
 
 }

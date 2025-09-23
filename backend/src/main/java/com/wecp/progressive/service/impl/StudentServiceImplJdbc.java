@@ -3,14 +3,19 @@ import java.util.*;
 
 import com.wecp.progressive.dao.StudentDAO;
 import com.wecp.progressive.entity.Student;
-public class StudentServiceImplJdbc  {
+import com.wecp.progressive.service.StudentService;
+public class StudentServiceImplJdbc  implements StudentService{
     private StudentDAO studentDAO;
+    
+    public StudentServiceImplJdbc(StudentDAO studentDAO) {
+        this.studentDAO = studentDAO;
+    }
     public List<Student> getAllStudents()
     {
         List<Student> list=new ArrayList<>();
         return list;
     }
-    public int addStudent(Student student)
+    public Integer addStudent(Student student)
     {
         return -1;
     }
