@@ -1,14 +1,19 @@
 package com.wecp.progressive.service.impl;
 import java.util.*;
 
+import org.springframework.stereotype.Service;
+
 import com.wecp.progressive.entity.Student;
 import com.wecp.progressive.service.StudentService;
+
+@Service
 public class StudentServiceImplArraylist implements StudentService  {
 
-   private static List<Student> studentList=new ArrayList<>();
+  List<Student> studentList=new ArrayList<>();
     public List<Student> getAllStudents()
     {
         //List<Student> list=new ArrayList<Student>();
+
          return studentList;
 
     }
@@ -39,8 +44,8 @@ public class StudentServiceImplArraylist implements StudentService  {
     }
     public void emptyArrayList()
     {
-       // studentList.clear();
-        studentList=new ArrayList<>();
+       studentList.clear();
+      //  studentList=new ArrayList<>();
     }
 
 }

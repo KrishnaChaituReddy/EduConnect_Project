@@ -5,9 +5,11 @@ import com.wecp.progressive.entity.Student;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 public interface StudentService {
 
-    List<Student> getAllStudents();
+    List<Student> getAllStudents() throws Exception;
 
     Integer addStudent(Student student);
 
