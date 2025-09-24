@@ -3,6 +3,7 @@ package com.wecp.progressive.controller;
 import com.wecp.progressive.entity.Student;
 import com.wecp.progressive.service.StudentService;
 import com.wecp.progressive.service.impl.StudentServiceImplArraylist;
+import com.wecp.progressive.service.impl.StudentServiceImplJpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,8 +29,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequestMapping("/student")
 public class StudentController {
 
-@Autowired 
 private StudentServiceImplArraylist studentServiceImplArraylist;
+@Autowired
+private StudentServiceImplJpa studentServiceImplJpa;
 @GetMapping
     public ResponseEntity<List<Student>> getAllStudents()  {
         return new ResponseEntity<>(studentServiceImplArraylist.getAllStudents(),HttpStatus.OK);
@@ -39,7 +41,7 @@ private StudentServiceImplArraylist studentServiceImplArraylist;
 //     return new String();
 // }
 @GetMapping("/{studentId}")
-    public ResponseEntity<Student> getStudentById(@PathVariable int studentId) {
+    public ResponseEntity<Student> getStudentById(@PathVariable int studentId) throws Exception{
         return new ResponseEntity<>(studentServiceImplArraylist.getStudentById(studentId),HttpStatus.OK);
     }
 // @PostMapping
@@ -54,10 +56,10 @@ public String postMethodName(@RequestBody String entity) {
     return entity;
 }
 @PostMapping
-    public ResponseEntity<Integer> addStudent( Student student) {
-       studentServiceImplArraylist.addStudent(student);
-        return null;
-        // return new ResponseEntity<>(result ,HttpStatus.CREATED);
+    public ResponseEntity<Integer> addStudent( @RequestBody Student student) {
+      Integer result= studentServiceImplArraylist.addStudent(student);
+        
+        return new ResponseEntity<>(result ,HttpStatus.CREATED);
         
     }
     @GetMapping("/fromArrayList")
@@ -80,14 +82,15 @@ public String postMethodName(@RequestBody String entity) {
     //     return entity;
     // }
     @PutMapping("/{studentId}")
-    public ResponseEntity<Void> updateStudent(@PathVariable int studentId, @RequestBody Student student) {
-        studentServiceImplArraylist.updateStudent(student);
+    public ResponseEntity<Void> updateStudent(@PathVariable int studentId, @RequestBody Student student) throws Exception{
+        studentServiceImplJpa.updateStudent(student);
         return new ResponseEntity<>(HttpStatus.OK);
+      
     }
-    @DeleteMapping("{studentId}")
-    public ResponseEntity<Void> deleteStudent(@PathVariable int studentId) {
-        studentServiceImplArraylist.deleteStudent(studentId);
-       return new ResponseEntity<>(HttpStatus.OK);
+    @DeleteMapping("/{studentId}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable int studentId) throws Exception{
+        studentServiceImplJpa.deleteStudent(studentId);
+       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
   
