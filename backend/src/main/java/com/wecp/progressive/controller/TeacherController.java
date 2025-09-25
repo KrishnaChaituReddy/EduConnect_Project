@@ -2,10 +2,7 @@ package com.wecp.progressive.controller;
 
 import com.wecp.progressive.entity.Teacher;
 import com.wecp.progressive.service.impl.TeacherServiceImplArraylist;
-<<<<<<< HEAD
 import com.wecp.progressive.service.impl.TeacherServiceImplJpa;
-=======
->>>>>>> 36ba4ae48a39846962d298c39aef58050b1b8049
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.PutMapping;
@@ -47,25 +43,6 @@ public class TeacherController  {
     public ResponseEntity<Integer> addTeacher(@RequestBody Teacher teacher) throws Exception {
         Integer n=teacherServiceImplJpa.addTeacher(teacher);
         return new ResponseEntity<>(n,HttpStatus.CREATED);
-=======
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
-
-
-public class TeacherController  {
- 
-    public ResponseEntity<List<Teacher>> getAllTeachers() {
-        return null;
-    }
-
-    public ResponseEntity<Teacher> getTeacherById(int teacherId) {
-        return null;
-    }
-
-    public ResponseEntity<Integer> addTeacher(Teacher teacher) {
-        return null;
->>>>>>> 36ba4ae48a39846962d298c39aef58050b1b8049
     }
   
    public String putMethodName(@PathVariable String id, @RequestBody String entity) {
@@ -74,7 +51,6 @@ public class TeacherController  {
        return entity;
    }
    @PutMapping("/{teacherId}")
-<<<<<<< HEAD
     public ResponseEntity<Void> updateTeacher(@PathVariable Integer teacherId, @RequestBody Teacher teacher)throws Exception {
         Teacher t=teacherServiceImplJpa.getTeacherById(teacherId);
         if(t!=null)
@@ -106,18 +82,5 @@ public class TeacherController  {
     public ResponseEntity<List<Teacher>> getTeacherSortedByYearsOfExperience()
      {
         return new ResponseEntity<>(teacherServiceImplJpa.getTeacherSortedByExperience(),HttpStatus.OK);
-=======
-    public ResponseEntity<Void> updateTeacher(int teacherId, Teacher teacher) throws Exception{
-        return new ResponseEntity<>(HttpStatus.OK);
-        
-    }
-
-    public ResponseEntity<Void> deleteTeacher(int teacherId) {
-        return null;
-    }
-
-    public ResponseEntity<List<Teacher>> getTeacherSortedByYearsOfExperience() {
-        return null;
->>>>>>> 36ba4ae48a39846962d298c39aef58050b1b8049
     }
 }
