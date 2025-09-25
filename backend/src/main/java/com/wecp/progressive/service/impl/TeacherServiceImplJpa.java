@@ -1,7 +1,10 @@
 package com.wecp.progressive.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.stereotype.Service;
+=======
+>>>>>>> 36ba4ae48a39846962d298c39aef58050b1b8049
 
 import com.wecp.progressive.entity.Student;
 import com.wecp.progressive.entity.Teacher;
@@ -9,7 +12,10 @@ import com.wecp.progressive.repository.TeacherRepository;
 import com.wecp.progressive.service.TeacherService;
 
 import java.util.*;
+<<<<<<< HEAD
 @Service
+=======
+>>>>>>> 36ba4ae48a39846962d298c39aef58050b1b8049
 public class TeacherServiceImplJpa  implements TeacherService {
     @Autowired
  private TeacherRepository teacherRepository;

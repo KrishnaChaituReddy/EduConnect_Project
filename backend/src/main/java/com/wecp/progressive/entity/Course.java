@@ -1,14 +1,20 @@
 package com.wecp.progressive.entity;
 
+<<<<<<< HEAD
 import javax.persistence.CascadeType;
+=======
+>>>>>>> 36ba4ae48a39846962d298c39aef58050b1b8049
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ManyToAny;
+=======
+>>>>>>> 36ba4ae48a39846962d298c39aef58050b1b8049
 
 @Entity
 public class Course {
@@ -17,10 +23,14 @@ public class Course {
 private int courseId;
 private String courseName;
 private String description;
+<<<<<<< HEAD
 @JoinColumn(name="teacher_id")
 private int teacherId;
 @ManyToOne (cascade = CascadeType.MERGE)
 private Teacher teacher;
+=======
+private int teacherId;
+>>>>>>> 36ba4ae48a39846962d298c39aef58050b1b8049
 
 
 public Course() {
