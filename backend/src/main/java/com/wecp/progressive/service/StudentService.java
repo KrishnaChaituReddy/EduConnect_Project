@@ -5,23 +5,25 @@ import com.wecp.progressive.entity.Student;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 public interface StudentService {
 
-    List<Student> getAllStudents();
+    public List<Student> getAllStudents() throws Exception;
 
-    Integer addStudent(Student student);
+    public Integer addStudent(Student student) throws Exception;
 
-    List<Student> getAllStudentSortedByName();
+    public List<Student> getAllStudentSortedByName() throws Exception;
 
-    default void emptyArrayList() {
+    public default void emptyArrayList() {
     }
 
     //Do not implement these methods in StudentServiceImplArraylist.java class
-    default void updateStudent(Student student) {}
+    public default void updateStudent(Student student) throws Exception {}
 
-    default void deleteStudent(int studentId) {}
+    public default void deleteStudent(int studentId) throws Exception{}
 
-    default Student getStudentById(int studentId) {
+    public default Student getStudentById(int studentId) throws Exception{
         return null;
     }
 
