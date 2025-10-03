@@ -1,23 +1,29 @@
 package com.wecp.progressive.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.wecp.progressive.dto.UserRegistrationDTO;
 import com.wecp.progressive.entity.User;
+import com.wecp.progressive.repository.UserRepository;
 
-public class UserLoginServiceImpl {
+public class UserLoginServiceImpl  {
 
-    User createUser(User user) {
-        return null;
+    @Autowired
+    private UserRepository userRepository;
+   public  User createUser(User user) {
+     return userRepository.save(user);
     }
 
-    User getUserByUsername(String username) {
-        return null;
+   public  User getUserByUsername(String username) {
+    return userRepository.findByUsername(username);
     }
 
-    void registerUser(UserRegistrationDTO userRegistrationDTO) {
+   public void registerUser(UserRegistrationDTO userRegistrationDTO) {
+       
 
     }
 
-    User getUserDetails(int userId) {
-        return null;
+  public   User getUserDetails(int userId) {
+return userRepository.findById(userId).get();
     }
 }
