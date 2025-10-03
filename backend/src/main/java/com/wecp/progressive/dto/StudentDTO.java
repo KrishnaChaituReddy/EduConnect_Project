@@ -11,6 +11,7 @@ public class StudentDTO {
     private String contactNumber;
     private String email;
     private String address;
+<<<<<<< HEAD
     public int getStudentId() {
         return studentId;
     }
@@ -74,5 +75,7 @@ public class StudentDTO {
     }
 
     
+=======
+>>>>>>> 8103dfae7c3cecd7dae55465017600a7daf547b4
 
 }

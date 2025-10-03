@@ -1,5 +1,6 @@
 package com.wecp.progressive.entity;
 
+<<<<<<< HEAD
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -74,4 +75,8 @@ public User(String username, String password, String role, Teacher teacher, Stud
 
 
 
+=======
+public class User {
+
+>>>>>>> 8103dfae7c3cecd7dae55465017600a7daf547b4
 }

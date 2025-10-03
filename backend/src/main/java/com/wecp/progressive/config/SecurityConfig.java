@@ -17,4 +17,73 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable(); // Disable CSRF protection if it's not needed
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final UserDetailsService userDetailsService;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtRequestFilter jwtRequestFilter;
+
+    @Autowired
+    public SecurityConfig(UserDetailsService userDetailsService,
+                          PasswordEncoder passwordEncoder,
+                          JwtRequestFilter jwtRequestFilter) {
+        this.userDetailsService = userDetailsService;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtRequestFilter = jwtRequestFilter;
+    }
+
+    // Configure authentication manager with UserDetailsService + PasswordEncoder
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService)
+            .passwordEncoder(passwordEncoder);
+    }
+
+    // Configure HTTP security
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .cors() // Enable CORS
+            .and()
+            .csrf().disable() // Disable CSRF for JWT-based authentication
+            .authorizeRequests()
+                .antMatchers("/auth/**").permitAll() // Public endpoints (e.g., login, register)
+                .antMatchers("/admin/**").hasRole("ADMIN") // Role-based access
+                .anyRequest().authenticated() // All other endpoints require authentication
+            .and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // No sessions (JWT)
+
+        // Add JWT filter before UsernamePasswordAuthenticationFilter
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+
+    // Expose AuthenticationManager bean
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+}
+>>>>>>> 8103dfae7c3cecd7dae55465017600a7daf547b4

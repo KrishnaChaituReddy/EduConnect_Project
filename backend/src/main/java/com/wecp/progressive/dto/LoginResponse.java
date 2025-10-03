@@ -5,6 +5,7 @@ public class LoginResponse {
    private String roles;
    private Integer userId;
    private Integer referenceId;
+<<<<<<< HEAD
    public String getToken() {
       return token;
    }
@@ -41,4 +42,6 @@ public class LoginResponse {
 
 
    
+=======
+>>>>>>> 8103dfae7c3cecd7dae55465017600a7daf547b4
 }
