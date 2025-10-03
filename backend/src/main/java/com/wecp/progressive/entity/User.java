@@ -1,10 +1,11 @@
 package com.wecp.progressive.entity;
-
-<<<<<<< HEAD
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -15,8 +16,11 @@ private int userId;
 private String username;
 private String password;
 private String role;
-
+@OneToOne
+@JoinColumn(name="teacher_id")
 private Teacher teacher;
+@OneToOne
+@JoinColumn(name="studnet_id")
 private Student student;
 public int getUserId() {
     return userId;
@@ -75,8 +79,4 @@ public User(String username, String password, String role, Teacher teacher, Stud
 
 
 
-=======
-public class User {
-
->>>>>>> 8103dfae7c3cecd7dae55465017600a7daf547b4
 }

@@ -3,7 +3,6 @@ package com.wecp.progressive.dto;
 public class LoginRequest {
    private String username;
    private String password;
-<<<<<<< HEAD
    public String getUsername() {
       return username;
    }
@@ -25,6 +24,4 @@ public class LoginRequest {
 
 
    
-=======
->>>>>>> 8103dfae7c3cecd7dae55465017600a7daf547b4
 }

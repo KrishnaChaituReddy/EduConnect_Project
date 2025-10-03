@@ -9,7 +9,6 @@ public class TeacherDTO {
     private String email;
     private String subject;
     private Integer yearsOfExperience;
-<<<<<<< HEAD
     public int getTeacherId() {
         return teacherId;
     }
@@ -74,7 +73,5 @@ public class TeacherDTO {
 
 
     
-=======
->>>>>>> 8103dfae7c3cecd7dae55465017600a7daf547b4
 
 }

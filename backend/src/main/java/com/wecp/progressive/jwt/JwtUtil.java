@@ -1,22 +1,4 @@
 package com.wecp.progressive.jwt;
-
-<<<<<<< HEAD
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.wecp.progressive.repository.UserRepository;
-
-public class JwtUtil {
-
-    @Autowired
-    private UserRepository userRepository;
-    private final String secret="secretKey00000000000000000000000000000000000000";
-    ,,
-
-}
-=======
-public class JwtUtil {
-
-}
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -84,4 +66,3 @@ public class JwtUtil {
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 }
->>>>>>> 8103dfae7c3cecd7dae55465017600a7daf547b4
