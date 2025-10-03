@@ -4,12 +4,19 @@ import java.util.*;
 import org.springframework.stereotype.Service;
 
 import com.wecp.progressive.entity.Student;
+import com.wecp.progressive.repository.StudentRepository;
 import com.wecp.progressive.service.StudentService;
 
 @Service
 public class StudentServiceImplArraylist implements StudentService  {
 
+    private final StudentRepository studentRepository;
+
   List<Student> studentList=new ArrayList<>();
+
+    StudentServiceImplArraylist(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
     public List<Student> getAllStudents()
     {
         //List<Student> list=new ArrayList<Student>();
@@ -46,6 +53,11 @@ public class StudentServiceImplArraylist implements StudentService  {
     {
        studentList.clear();
       //  studentList=new ArrayList<>();
+    }
+
+    public Student getStudentById(int studentId)
+    {
+      return studentRepository.findByStudentId(studentId);
     }
 
 }

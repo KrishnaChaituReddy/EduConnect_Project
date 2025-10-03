@@ -36,7 +36,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         String username = null;
         String jwt = null;
-
         // Extract JWT token from "Authorization: Bearer <token>"
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7); // remove "Bearer "
@@ -58,7 +57,22 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
+        else
+        {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN,"Invalid jwt token ");
+            return;
+        }
+    
+    
+                                    
+    // catch(Exception e)
+    //                                 {
+    //                                     response.sendError(HttpServletResponse.SC_FORBIDDEN,"Invalid jwt token ");
+    //         return;
+
+    //                                 }
 
         filterChain.doFilter(request, response);
     }
+
 }

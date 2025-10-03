@@ -45,7 +45,7 @@ public class CourseController {
         if(course!=null)
         {
             courseService.addCourse(course);
-            return new ResponseEntity<>(course.getCourseId(),HttpStatus.OK);
+            return new ResponseEntity<>(course.getCourseId(),HttpStatus.CREATED);
         }
         else
         {

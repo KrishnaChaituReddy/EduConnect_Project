@@ -31,6 +31,7 @@ public class StudentController {
 //abc
 //123
 //tdcgfkudtxfhcgj
+@Autowired
 private StudentServiceImplArraylist studentServiceImplArraylist;
 @Autowired
 private StudentServiceImplJpa studentServiceImplJpa;
