@@ -3,6 +3,7 @@ package com.wecp.progressive.controller;
 import com.wecp.progressive.dto.LoginRequest;
 import com.wecp.progressive.dto.LoginResponse;
 import com.wecp.progressive.dto.UserRegistrationDTO;
+<<<<<<< HEAD
 import com.wecp.progressive.entity.User;
 import com.wecp.progressive.jwt.JwtUtil;
 import com.wecp.progressive.service.impl.UserLoginServiceImpl;
@@ -86,5 +87,20 @@ public class UserLoginController {
             return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     
+=======
+import org.springframework.http.ResponseEntity;
+
+public class UserLoginController {
+    public ResponseEntity<?> registerUser(UserRegistrationDTO registrationDTO) {
+        return null;
+    }
+
+    public ResponseEntity<LoginResponse> loginUser(LoginRequest loginRequest) {
+        return null;
+    }
+
+    public ResponseEntity<?> getUserDetails(int userId) {
+        return null;
+>>>>>>> 1ad1d074529ce688389d9a48e3f657964c2622b8
     }
 }

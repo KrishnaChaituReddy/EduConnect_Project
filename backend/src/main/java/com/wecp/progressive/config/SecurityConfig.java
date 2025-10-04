@@ -3,7 +3,10 @@ package com.wecp.progressive.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+<<<<<<< HEAD
 import org.springframework.http.HttpMethod;
+=======
+>>>>>>> 1ad1d074529ce688389d9a48e3f657964c2622b8
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -46,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .cors() // Enable CORS
             .and()
+<<<<<<< HEAD
             .csrf().disable()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -67,6 +71,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                  // Role-based access
                  .antMatchers("/student/**").hasAuthority("STUDENT")
                  .antMatchers("/teacher/**").hasAnyAuthority("TEACHER")
+=======
+            .csrf().disable() // Disable CSRF for JWT-based authentication
+            .authorizeRequests()
+                .antMatchers("/auth/**").permitAll() // Public endpoints (e.g., login, register)
+                .antMatchers("/admin/**").hasRole("ADMIN") // Role-based access
+>>>>>>> 1ad1d074529ce688389d9a48e3f657964c2622b8
                 .anyRequest().authenticated() // All other endpoints require authentication
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // No sessions (JWT)

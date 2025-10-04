@@ -57,11 +57,19 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
+<<<<<<< HEAD
         // else
         // {
         //     response.sendError(HttpServletResponse.SC_FORBIDDEN,"Invalid jwt token ");
         //     return;
         // }
+=======
+        else
+        {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN,"Invalid jwt token ");
+            return;
+        }
+>>>>>>> 1ad1d074529ce688389d9a48e3f657964c2622b8
     
     
                                     

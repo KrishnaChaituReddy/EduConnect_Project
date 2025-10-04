@@ -29,5 +29,9 @@ public interface StudentService {
 
     //Do not implement these methods in StudentServiceImplArraylist.java and StudentServiceImplJdbc.java class
     //Do not implement in StudentServiceImplJpa.java until Day-13
+<<<<<<< HEAD
     default public void modifyStudentDetails(StudentDTO studentDTO) throws Exception { }
+=======
+    default public void modifyStudentDetails(StudentDTO studentDTO) { }
+>>>>>>> 1ad1d074529ce688389d9a48e3f657964c2622b8
 }

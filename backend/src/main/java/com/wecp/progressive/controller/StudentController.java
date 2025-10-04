@@ -45,7 +45,11 @@ private StudentServiceImplJpa studentServiceImplJpa;
 // }
 @GetMapping("/{studentId}")
     public ResponseEntity<Student> getStudentById(@PathVariable int studentId) throws Exception{
+<<<<<<< HEAD
         return new ResponseEntity<>(studentServiceImplJpa.getStudentById(studentId),HttpStatus.OK);
+=======
+        return new ResponseEntity<>(studentServiceImplArraylist.getStudentById(studentId),HttpStatus.OK);
+>>>>>>> 1ad1d074529ce688389d9a48e3f657964c2622b8
     }
 // @PostMapping
 // public String postMethodName(@RequestBody String entity) {

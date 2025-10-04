@@ -1,7 +1,10 @@
 package com.wecp.progressive.service.impl;
 import java.util.*;
 
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
+=======
+>>>>>>> 1ad1d074529ce688389d9a48e3f657964c2622b8
 import org.springframework.stereotype.Service;
 
 import com.wecp.progressive.entity.Student;
@@ -10,6 +13,7 @@ import com.wecp.progressive.service.StudentService;
 
 @Service
 public class StudentServiceImplArraylist implements StudentService  {
+<<<<<<< HEAD
 // @Autowired
     private  StudentRepository studentRepository;
 
@@ -19,6 +23,16 @@ public class StudentServiceImplArraylist implements StudentService  {
   //     this.studentRepository = studentRepository;
   // }
   List<Student> studentList=new ArrayList<>();
+=======
+
+    private final StudentRepository studentRepository;
+
+  List<Student> studentList=new ArrayList<>();
+
+    StudentServiceImplArraylist(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+>>>>>>> 1ad1d074529ce688389d9a48e3f657964c2622b8
     public List<Student> getAllStudents()
     {
         //List<Student> list=new ArrayList<Student>();

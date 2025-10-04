@@ -71,7 +71,11 @@ public Student getStudentById(int studentId)
    {
        studentRepository.deleteById(studentId);
    }
+<<<<<<< HEAD
     public void modifyStudentDetails(StudentDTO studentDTO) throws Exception
+=======
+    public void modifyStudentDetails(StudentDTO studentDTO)
+>>>>>>> 1ad1d074529ce688389d9a48e3f657964c2622b8
     {
         
     }
