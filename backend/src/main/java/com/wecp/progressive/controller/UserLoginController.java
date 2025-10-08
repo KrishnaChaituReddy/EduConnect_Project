@@ -49,7 +49,14 @@ public class UserLoginController {
     }
 }
 
-    public ResponseEntity<LoginResponse> loginUser(LoginRequest loginRequest) {
+   
+    // public String postMethodName(@RequestBody String entity) {
+    //     //TODO: process POST request
+        
+    //     return entity;
+    // }
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
        Authentication authentication =authenticationManager.authenticate
        (
         new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -61,10 +68,12 @@ public class UserLoginController {
         if(user.getRole().equals("STUDENT")&&user.getStudent()!=null)
         {
             studentId=user.getStudent().getStudentId();
+         //   System.out.println(teacherId);
         }
         if(user.getRole().equals("TEACHER")&&user.getTeacher()!=null)
         {
             teacherId=user.getTeacher().getTeacherId();
+          //  System.out.println(teacherId);
         }
         LoginResponse ls=new LoginResponse(token, user.getRole(), user.getUserId(), studentId,teacherId);
         return new ResponseEntity<>(ls,HttpStatus.OK);

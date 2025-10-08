@@ -1,0 +1,23 @@
+# POST http://localhost:5000/user/register
+# Content-Type: application/json
+
+# {
+#     "username":"KrishnaReddy",
+#     "password":"12345",
+#     "role":"teacher",
+#     "fullName":"Krishna chaitanya",
+#     "contactNumber":"909009090",
+#     "email":"s@gmail.com",
+#     "address":"NTR",
+#     "dateOfBirth":"2003-08-23",
+#     "subject":"vd",
+#     "yearsOfExperience":98
+
+# }
+POST http://localhost:5000/user/login
+Content-Type: application/json
+
+{
+    "username":"Krishna",
+       "password":"12345"
+}

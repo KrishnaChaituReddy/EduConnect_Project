@@ -1,5 +1,6 @@
 package com.wecp.progressive.entity;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,11 +17,12 @@ private int userId;
 private String username;
 private String password;
 private String role;
-@OneToOne
+@OneToOne(fetch = FetchType.EAGER)
+
 @JoinColumn(name="teacher_id")
 private Teacher teacher;
-@OneToOne
-@JoinColumn(name="studnet_id")
+@OneToOne(fetch = FetchType.EAGER)
+@JoinColumn(name="student_id")
 private Student student;
 public int getUserId() {
     return userId;

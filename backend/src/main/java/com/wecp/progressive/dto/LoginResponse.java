@@ -77,6 +77,6 @@ public class LoginResponse {
       this.userId = userId;
       this.studentId = studentId;
       this.teacherId = teacherId;
-      this.referenceId = referenceId;
+     // this.referenceId = referenceId;
    }
 }

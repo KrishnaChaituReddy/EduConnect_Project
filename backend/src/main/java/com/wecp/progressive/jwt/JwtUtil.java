@@ -13,7 +13,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private final String secret = "secretKey000000"; // Secret key for signing JWT
+    private final String secret = "KrishnaChaitanya00000000000000000000000000000000000000000000000000000000000000000000000000"; // Secret key for signing JWT
     private final int expiration = 86400 * 1000; // Token expiration (24 hours in ms)
 
     // Generate token with username

@@ -8,8 +8,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.wecp.progressive.dto.UserRegistrationDTO;
+import com.wecp.progressive.entity.Student;
+import com.wecp.progressive.entity.Teacher;
 import com.wecp.progressive.entity.User;
 import com.wecp.progressive.jwt.JwtUtil;
+import com.wecp.progressive.repository.StudentRepository;
+import com.wecp.progressive.repository.TeacherRepository;
 import com.wecp.progressive.repository.UserRepository;
 
 @Service
@@ -17,6 +21,10 @@ public class UserLoginServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private TeacherRepository teacherRepository;
+    @Autowired
+    private StudentRepository studentRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
    public  User createUser(User user) {
@@ -30,12 +38,37 @@ public class UserLoginServiceImpl implements UserDetailsService {
    public  void registerUser(UserRegistrationDTO userRegistrationDTO) throws Exception {
     if(userRepository.findByUsername(userRegistrationDTO.getUsername())!=null)
     {
-      throw new Exception("user alredy there");
+      throw new Exception("The user already exists.");
     }
     User user=new User();
     user.setUsername(userRegistrationDTO.getUsername());
     user.setRole(userRegistrationDTO.getRole());
     user.setPassword(passwordEncoder.encode(userRegistrationDTO.getPassword()));
+
+    if("STUDENT".equalsIgnoreCase(userRegistrationDTO.getRole()))
+    {
+      Student student=new Student();
+      student.setFullName(userRegistrationDTO.getFullName());
+      student.setContactNumber(userRegistrationDTO.getContactNumber());
+      student.setEmail(userRegistrationDTO.getEmail());
+      student.setAddress(userRegistrationDTO.getAddress());
+      student.setDateOfBirth(userRegistrationDTO.getDateOfBirth());
+      Student savedstudent=studentRepository.save(student);
+      user.setStudent(savedstudent);
+    }
+    if("TEACHER".equalsIgnoreCase(userRegistrationDTO.getRole()))
+    {
+      Teacher teacher=new Teacher();
+      teacher.setFullName(userRegistrationDTO.getFullName());
+      teacher.setContactNumber(userRegistrationDTO.getContactNumber());
+      teacher.setEmail(userRegistrationDTO.getEmail());
+      teacher.setSubject(userRegistrationDTO.getSubject());
+      teacher.setYearsOfExperience(userRegistrationDTO.getYearsOfExperience());
+      Teacher savedteacher=teacherRepository.save(teacher);
+      user.setTeacher(savedteacher);
+    }
+    
+
   userRepository.save(user);
        
 

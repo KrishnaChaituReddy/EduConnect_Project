@@ -53,7 +53,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
             // Disable CSRF for JWT-based authentication
             .authorizeRequests()
-                .antMatchers("/auth/**").permitAll() // Public endpoints (e.g., login, register)
+                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/user/***" ).permitAll()
+                .antMatchers("/login/***").permitAll() // Public endpoints (e.g., login, register)
                 .antMatchers("/attendance/**").hasAuthority("TEACHER")
                 .antMatchers(HttpMethod.GET,"/attendance/**").hasAuthority("STUDENT")
 
