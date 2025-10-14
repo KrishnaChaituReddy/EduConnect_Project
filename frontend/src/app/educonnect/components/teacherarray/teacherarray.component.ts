@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, NgModule } from "@angular/core";
 import { Teacher } from "../../models/Teacher";
 import {CommonModule} from '@angular/common';
@@ -35,6 +36,10 @@ export class TeacherArrayComponent  {
    {
     this.showDetails=!this.showDetails;
    }
+=======
+
+export class TeacherArrayComponent  {
+>>>>>>> bec44b4b13549dd02f89397c695618ea943c3414
 
  
 

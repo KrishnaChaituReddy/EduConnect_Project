@@ -1,7 +1,12 @@
 export class Student {
 
 
+<<<<<<< HEAD
        studentId:number;
+=======
+
+    studentId:number;
+>>>>>>> bec44b4b13549dd02f89397c695618ea943c3414
     fullName:string;
     dateOfBirth:Date|null;
     contactNumber:string;

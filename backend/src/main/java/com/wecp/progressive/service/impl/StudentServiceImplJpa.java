@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.context.annotation.Primary;
+=======
+>>>>>>> bec44b4b13549dd02f89397c695618ea943c3414
 import org.springframework.stereotype.Service;
 
 import com.wecp.progressive.dto.StudentDTO;
@@ -16,7 +19,10 @@ import com.wecp.progressive.repository.StudentRepository;
 import com.wecp.progressive.service.StudentService;
 
 @Service
+<<<<<<< HEAD
 @Primary
+=======
+>>>>>>> bec44b4b13549dd02f89397c695618ea943c3414
 public class StudentServiceImplJpa implements StudentService {
 
     @Autowired

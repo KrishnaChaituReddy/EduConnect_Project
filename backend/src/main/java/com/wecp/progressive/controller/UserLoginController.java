@@ -65,6 +65,7 @@ public class UserLoginController {
         User user=userLoginServiceImpl.getUserByUsername(loginRequest.getUsername());
         Integer studentId=null;
         Integer teacherId=null;
+<<<<<<< HEAD
         if("student".equalsIgnoreCase(user.getRole())&&user.getStudent()!=null)
         {
             studentId=user.getStudent().getStudentId();
@@ -74,6 +75,17 @@ public class UserLoginController {
         {
             teacherId=user.getTeacher().getTeacherId();
            System.out.println(user.getTeacher());
+=======
+        if(user.getRole().equals("STUDENT")&&user.getStudent()!=null)
+        {
+            studentId=user.getStudent().getStudentId();
+         //   System.out.println(teacherId);
+        }
+        if(user.getRole().equals("TEACHER")&&user.getTeacher()!=null)
+        {
+            teacherId=user.getTeacher().getTeacherId();
+          //  System.out.println(teacherId);
+>>>>>>> bec44b4b13549dd02f89397c695618ea943c3414
         }
         LoginResponse ls=new LoginResponse(token, user.getRole(), user.getUserId(), studentId,teacherId);
         return new ResponseEntity<>(ls,HttpStatus.OK);

@@ -67,8 +67,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 //.antMatchers("/admin/**").hasRole("ADMIN")
                  // Role-based access
+<<<<<<< HEAD
                  .antMatchers(HttpMethod.POST,"/student").permitAll()
                  .antMatchers("/student").hasAuthority("STUDENT")
+=======
+                 .antMatchers("/student/**").hasAuthority("STUDENT")
+>>>>>>> bec44b4b13549dd02f89397c695618ea943c3414
                  .antMatchers("/teacher/**").hasAnyAuthority("TEACHER")
                 .anyRequest().authenticated() // All other endpoints require authentication
             .and()

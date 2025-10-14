@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { formatCurrency } from "@angular/common";
 import { Student } from "../../models/Student";
 import { Component } from "@angular/core";
@@ -65,5 +66,9 @@ export class StudentCreateComponent {
 
         
     }
+=======
+
+export class StudentCreateComponent {
+>>>>>>> bec44b4b13549dd02f89397c695618ea943c3414
  
 }
