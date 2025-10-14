@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';  
+import { StudentSampleComponent } from './educonnect/components/studentsample/studentsample.component';
+import { TeacherSampleComponent } from './educonnect/components/teachersample/teachersample.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +14,10 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule 
+    AppRoutingModule,
+    StudentSampleComponent,
+    TeacherSampleComponent,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
