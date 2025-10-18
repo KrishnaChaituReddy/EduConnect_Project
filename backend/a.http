@@ -1,0 +1,43 @@
+###
+ POST http://localhost:5000/user/register
+Content-Type: application/json
+
+{
+    "username":"ooooooo",
+    "password":"45671",
+    "role":"teacher",
+    "fullName":"goukul rama chandhra",
+    "contactNumber":"94567867",
+    "email":"n@gmail.com",
+    "address":"Krishna",
+    "dateOfBirth":"2003-08-13",
+    "subject":"maths",
+    "yearsOfExperience":34
+
+}
+###
+POST http://localhost:5000/user/login
+Content-Type: application/json
+
+{
+    "username":"ooooo",
+       "password":"45671"
+}
+###
+# GET http://localhost:5000/user/1
+# Content-Type: application/json
+
+DELETE  http://localhost:5000/teacher/5
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiVEVBQ0hFUiIsInVzZXJJZCI6MSwiaWF0IjoxNzYwODExNjYxLCJleHAiOjE3NjEzMTIzMTV9.X8mSiy--RvzXMqHZXPV58yKnvwy9rO2t7U8roHN2T9-7D-f_XyAYmJWesZbii1M4CsWUgLau2wcf4qGMEug4nA
+
+
+
+# Content-Type: application/json
+
+# {
+#     "fullName":"Narayana",
+#     "dateOfBirth":"2003-08-13",
+#     "contactNumber":"94567867",
+#      "email":"n@gmail.com",
+#      "address":"nadhayalla"
+# }
