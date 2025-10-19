@@ -1,0 +1,62 @@
+##
+ POST http://localhost:5000/user/register
+Content-Type: application/json
+
+{
+    "username":"Alien",
+    "password":"Alien@333",
+    "role":"student",
+    "fullName":"Alien varma",
+    "contactNumber":"94567867",
+    "email":"A@gmail.com",
+    "address":"Krishna",
+    "dateOfBirth":"2003-08-13",
+    "subject":"maths",
+    "yearsOfExperience":34
+
+}
+###
+POST http://localhost:5000/user/login
+Content-Type: application/json
+
+{
+    "username":"Alien",
+       "password":"Alien@333"
+}
+
+
+
+
+###
+# GET http://localhost:5000/user/1
+
+
+
+# Content-Type: application/json
+
+PUT http://localhost:5000/student/4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiU1RVREVOVCIsInVzZXJJZCI6NiwiaWF0IjoxNzYwODY5NTY4LCJleHAiOjE3NjEzNzAyMjJ9.HzmamDwN7h_YJbbUoCrGyueUDDAaGJR388dgt-umIzi1Kcz_jUO0xr4QXcqtFEWclKR2sSHccjMRLkOiiKyw8Q
+Content-Type: application/json
+
+{
+    "username":"Alien",
+    "password":"Alien@333",
+    "role":"student",
+    "fullName":"Alien varma",
+     "dateOfBirth":"2003-08-13",
+    "contactNumber":"94567867",
+    "email":"A@gmail.com",
+    "address":"Krishna"
+    
+
+}
+
+# Content-Type: application/json
+
+# {
+#     "fullName":"Narayana",
+#     "dateOfBirth":"2003-08-13",
+#     "contactNumber":"94567867",
+#      "email":"n@gmail.com",
+#      "address":"nadhayalla"
+# }
