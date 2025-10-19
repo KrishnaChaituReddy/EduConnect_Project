@@ -44,10 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/user/register", "/user/login").permitAll()
-<<<<<<< HEAD
                 // .antMatchers(HttpMethod.GET,"user/**").hasAnyAuthority("user")
-=======
->>>>>>> 7b30f20d97e4c2f5521b599e2155275bdaaf09df
                 .antMatchers(HttpMethod.GET, "/student/**").hasAnyAuthority("STUDENT", "TEACHER")
                 .antMatchers(HttpMethod.POST, "/student/**").hasAuthority("STUDENT")
                 .antMatchers(HttpMethod.PUT, "/student/**").hasAuthority("STUDENT")

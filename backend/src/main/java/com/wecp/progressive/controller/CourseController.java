@@ -64,11 +64,7 @@ public class CourseController {
     public ResponseEntity<Void> deleteCourse(@PathVariable Integer courseId) throws Exception{
          courseService.deleteCourse(courseId);
          return new ResponseEntity<>(HttpStatus.OK);
-<<<<<<< HEAD
       
-=======
-        // return null;
->>>>>>> 7b30f20d97e4c2f5521b599e2155275bdaaf09df
     }
     @GetMapping("/teacher/{teacherId}")
     public ResponseEntity<List<Course>> getAllCourseByTeacherId(@PathVariable int teacherId) throws Exception{
