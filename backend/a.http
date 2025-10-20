@@ -3,12 +3,12 @@
 Content-Type: application/json
 
 {
-    "username":"Alien",
+    "username":"Chaitanya",
     "password":"Alien@333",
     "role":"student",
     "fullName":"Alien varma",
     "contactNumber":"94567867",
-    "email":"A@gmail.com",
+    "email":"c@gmail.com",
     "address":"Krishna",
     "dateOfBirth":"2003-08-13",
     "subject":"maths",
@@ -20,7 +20,7 @@ POST http://localhost:5000/user/login
 Content-Type: application/json
 
 {
-    "username":"Alien",
+    "username":"Chaitanya",
        "password":"Alien@333"
 }
 

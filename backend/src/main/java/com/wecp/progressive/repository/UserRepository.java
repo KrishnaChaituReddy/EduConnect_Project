@@ -1,21 +1,31 @@
 package com.wecp.progressive.repository;
 
+import com.wecp.progressive.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.wecp.progressive.entity.User;
-import java.util.List;
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
 
+    User findByUsername(String username);
 
-public interface UserRepository extends JpaRepository<User,Integer>{
+    @Query("SELECT u FROM User u WHERE u.teacher.teacherId = :teacherId")
+    User findByTeacherId(@Param("teacherId") int teacherId);
 
+    @Query("SELECT u FROM User u WHERE u.student.studentId = :studentId")
+    User findByStudentId(@Param("studentId") int studentId);
 
-    @Query("select u from User u LEFT JOIN FETCH u.student LEFT JOIN FETCH u.teacher where u.username=:username")
-    public User findByUsernameWithDetails(@Param("username")String username);
-    // public User findByTeacherId(int teacherId);
-    // public User findByStudentId(int studentId);
-    // public void deleteByTeacher(int teacherId);
-    // public void deleteByStudentId(int studentId);
-    public User findByUsername(String username);
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM User u WHERE u.teacher.teacherId = :teacherId")
+    void deleteByTeacherId(@Param("teacherId") int teacherId);
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM User u WHERE u.student.studentId = :studentId")
+    void deleteByStudentId(@Param("studentId") int studentId);
 }

@@ -17,11 +17,7 @@ export class DashboardComponent implements OnInit {
     courses: Course[] = [];
     enrollments: Enrollment[] = [];
     students: Student[] = [];
-<<<<<<< HEAD
    allEnrollments:Enrollment[]=[];
-=======
-
->>>>>>> 7b30f20d97e4c2f5521b599e2155275bdaaf09df
     role: string | null;
     userId: number;
     studentId: number;
@@ -97,10 +93,7 @@ export class DashboardComponent implements OnInit {
             },
             error: (error) => console.log('Error loading all courses.', error)
         });
-<<<<<<< HEAD
         
-=======
->>>>>>> 7b30f20d97e4c2f5521b599e2155275bdaaf09df
     }
 
 
@@ -111,7 +104,6 @@ export class DashboardComponent implements OnInit {
             },
             error: (error) => console.log('Error loading enrollments', error),
         });
-<<<<<<< HEAD
         this.educonnectService.getAllEnrollments().subscribe({
             next:(response)=>
             {
@@ -121,10 +113,6 @@ export class DashboardComponent implements OnInit {
         });
 
     }
-=======
-    }
-
->>>>>>> 7b30f20d97e4c2f5521b599e2155275bdaaf09df
     onCourseSelect(course: Course): void {
         this.selectedCourseId = course.courseId;
         this.loadEnrollments(this.selectedCourseId);
@@ -167,17 +155,10 @@ export class DashboardComponent implements OnInit {
     }
 
     deleteCourse(courseId: number): void {
-<<<<<<< HEAD
         if (confirm(`Are you sure you want to delete your ${courseId} course profile?`)) {
             this.educonnectService.deleteCourse(courseId).subscribe({
                 next: () => {
                 this.router.navigate(['/']);
-=======
-        if (confirm('Are you sure you want to delete your course profile?')) {
-            this.educonnectService.deleteCourse(courseId).subscribe({
-                next: () => {
-                    this.router.navigate(['/']);
->>>>>>> 7b30f20d97e4c2f5521b599e2155275bdaaf09df
                 },
                 error: (error) => console.error('Error deleting course:', error)
 

@@ -1,63 +1,74 @@
 package com.wecp.progressive.service.impl;
 
+import com.wecp.progressive.entity.Course;
+import com.wecp.progressive.exception.CourseAlreadyExistsException;
+import com.wecp.progressive.exception.CourseNotFoundException;
+import com.wecp.progressive.repository.AttendanceRepository;
+import com.wecp.progressive.repository.CourseRepository;
+import com.wecp.progressive.repository.EnrollmentRepository;
+import com.wecp.progressive.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wecp.progressive.entity.Course;
-import com.wecp.progressive.exception.CourseNotFoundException;
-import com.wecp.progressive.repository.CourseRepository;
-import com.wecp.progressive.service.CourseService;
+import java.util.List;
 
-import java.util.*;
 @Service
 public class CourseServiceImplJpa implements CourseService {
-@Autowired
-private CourseRepository courseRepository;
 
+    private CourseRepository courseRepository;
 
+    @Autowired
+    EnrollmentRepository enrollmentRepository;
 
-public CourseServiceImplJpa(CourseRepository courseRepository) {
-    this.courseRepository = courseRepository;
-}
-public List<Course> getAllCourses() 
-{
-return courseRepository.findAll();
-}
-public Course getCourseById(int courseId){
-    if(courseRepository.findByCourseId(courseId)!=null){
- return courseRepository.findByCourseId(courseId);
+    @Autowired
+    AttendanceRepository attendanceRepository;
+
+    @Autowired
+    public CourseServiceImplJpa(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
     }
- throw new CourseNotFoundException("Not found");
-}
- 
-public Integer addCourse(Course course)
-{
-    Course c=courseRepository.save(course);
-    return c.getCourseId();
-}
-public void updateCourse(Course course) throws Exception{
-    if(courseRepository.findById(course.getCourseId()).get()!=null)
-    {
+
+    @Override
+    public List<Course> getAllCourses() throws Exception {
+        return courseRepository.findAll();
+    }
+
+    @Override
+    public Course getCourseById(int courseId) throws Exception {
+        return courseRepository.findById(courseId)
+                .orElseThrow(() -> new CourseNotFoundException("Course with ID " + courseId + " not found for deletion"));
+    }
+
+    @Override
+    public Integer addCourse(Course course) throws Exception {
+        Course existingCourse = courseRepository.findByCourseName(course.getCourseName());
+        if (existingCourse != null) {
+            throw new CourseAlreadyExistsException("Course with this name already exists, Course Name: " + course.getCourseName());
+        }
+        return courseRepository.save(course).getCourseId();
+    }
+
+    @Override
+    public void updateCourse(Course course) throws Exception {
+        Course existingCourse = courseRepository.findByCourseName(course.getCourseName());
+        if (existingCourse != null && existingCourse.getCourseId() != course.getCourseId()) {
+            throw new CourseAlreadyExistsException("Course with this name already exists, Course Name: " + course.getCourseName());
+        }
         courseRepository.save(course);
     }
-    else
-    {
-        throw new Exception("course id"+ course.getCourseId() +"not found");
-    }
-}
-   public void deleteCourse(int courseId){
-   // if(courseRepository.findByCourseId(courseId)){
+
+    @Override
+    public void deleteCourse(int courseId) throws Exception {
+        if (!courseRepository.existsById(courseId)) {
+            throw new CourseNotFoundException("Course with ID " + courseId + " not found for deletion");
+        }
+        attendanceRepository.deleteByCourseId(courseId);
+        enrollmentRepository.deleteByCourseId(courseId);
         courseRepository.deleteById(courseId);
+    }
 
-    // else{
-    //     throw new CourseNotFoundException("Course Not found");
-    // }
-
-  
-   }
-
-   public List<Course> getAllCourseByTeacherId(int teacherId)
-   {
-    return courseRepository.findAll();
-   }
+    @Override
+    public List<Course> getAllCourseByTeacherId(int teacherId) {
+        return courseRepository.findAllByTeacherId(teacherId);
+    }
 }

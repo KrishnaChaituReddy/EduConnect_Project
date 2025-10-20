@@ -56,7 +56,7 @@ public class TeacherController  {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @GetMapping("/yearsOfExperience")
-    public ResponseEntity<List<Teacher>> getTeacherSortedByYearsOfExperience() {
+    public ResponseEntity<List<Teacher>> getTeacherSortedByYearsOfExperience() throws Exception {
         return new ResponseEntity<>(teacherServiceImplJpa.getTeacherSortedByExperience(),HttpStatus.OK);
     }
 }
