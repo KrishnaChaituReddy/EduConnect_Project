@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from '../../models/Course';
@@ -17,7 +18,7 @@ export class DashboardComponent implements OnInit {
     courses: Course[] = [];
     enrollments: Enrollment[] = [];
     students: Student[] = [];
-   allEnrollments:Enrollment[]=[];
+
     role: string | null;
     userId: number;
     studentId: number;
@@ -93,7 +94,6 @@ export class DashboardComponent implements OnInit {
             },
             error: (error) => console.log('Error loading all courses.', error)
         });
-        
     }
 
 
@@ -104,15 +104,8 @@ export class DashboardComponent implements OnInit {
             },
             error: (error) => console.log('Error loading enrollments', error),
         });
-        this.educonnectService.getAllEnrollments().subscribe({
-            next:(response)=>
-            {
-                this.allEnrollments=response;
-            },
-            error: (error) => console.log('Error loading enrollments', error),
-        });
-
     }
+
     onCourseSelect(course: Course): void {
         this.selectedCourseId = course.courseId;
         this.loadEnrollments(this.selectedCourseId);
@@ -155,10 +148,11 @@ export class DashboardComponent implements OnInit {
     }
 
     deleteCourse(courseId: number): void {
-        if (confirm(`Are you sure you want to delete your ${courseId} course profile?`)) {
+        if (confirm('Are you sure you want to delete your course profile?')) {
             this.educonnectService.deleteCourse(courseId).subscribe({
                 next: () => {
-                this.router.navigate(['/']);
+                    // this.router.navigate(['/']);
+                    window.location.reload();
                 },
                 error: (error) => console.error('Error deleting course:', error)
 

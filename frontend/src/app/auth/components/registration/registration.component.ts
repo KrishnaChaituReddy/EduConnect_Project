@@ -20,10 +20,10 @@ export class RegistrationComponent {
         this.registrationForm = this.formBuilder.group({
             username: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]],
             email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/)]],
+            password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@$%&*?])[A-Za-z0-9!@$%&*?]{8,}$/)]],
             role: ['', [Validators.required]],
             fullName: ['', Validators.required],
-            contactNumber: ['', Validators.required],
+            contactNumber: ['', [Validators.required,Validators.pattern(/^[0-9]{10}$/)]],
             subject: [''],
             yearsOfExperience: [null],
             dateOfBirth: [null], 
@@ -49,7 +49,7 @@ export class RegistrationComponent {
         if (this.registrationForm.valid) {
             this.authService.createUser(this.registrationForm.value).subscribe({
                 next: (response) => {
-                    this.successMessage = "User successfully registered";
+                    this.successMessage =  this.registrationForm.value.role +" Successfully registered";
                     this.errorMessage = null;
                     this.resetForm();
                     console.log('Success:', this.successMessage);

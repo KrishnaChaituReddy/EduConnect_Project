@@ -43,7 +43,7 @@ public class CourseServiceImplJpa implements CourseService {
     public Integer addCourse(Course course) throws Exception {
         Course existingCourse = courseRepository.findByCourseName(course.getCourseName());
         if (existingCourse != null) {
-            throw new CourseAlreadyExistsException("Course with this name already exists, Course Name: " + course.getCourseName());
+            throw new CourseAlreadyExistsException("Course already exists,Course Name:"+ course.getCourseName());
         }
         return courseRepository.save(course).getCourseId();
     }

@@ -43,11 +43,11 @@
     </div>
 
     <div class="enrollment-section">
-        <h2 style="color: blueviolet;">All students List enrollment in all Courses </h2>
-        <div *ngIf="allEnrollments.length === 0" class="empty-list">
+        <h2>Enrollment in Selected Course - {{ selectedCourseId }} </h2>
+        <div *ngIf="selectedCourseEnrollment.length === 0" class="empty-list">
             <p>No enrollments available.</p>
         </div>
-        <div *ngIf="allEnrollments.length > 0">
+        <div *ngIf="selectedCourseEnrollment.length > 0">
             <table class="enrollment-table">
                 <thead>
                     <tr>
@@ -57,7 +57,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let enrollment of allEnrollments">
+                    <tr *ngFor="let enrollment of selectedCourseEnrollment">
                         <td>{{ enrollment.course.courseName }}</td>
                         <td>{{ enrollment.student.fullName }}</td>
                         <td>{{ enrollment.enrollmentDate | date }}</td>

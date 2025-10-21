@@ -39,6 +39,7 @@ public class UserLoginController {
     }
     
 
+    // from the frontned it will extract the username and psswordw
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
         try {
@@ -46,7 +47,7 @@ public class UserLoginController {
                     new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
             );
 
-            UserDetails userDetails = userLoginService.loadUserByUsername(loginRequest.getUsername());
+           UserDetails userDetails = userLoginService.loadUserByUsername(loginRequest.getUsername());
             String token = jwtUtil.generateToken(loginRequest.getUsername());
             User user = userLoginService.getUserByUsername(loginRequest.getUsername());
             Integer studentId = user.getStudent() != null ? user.getStudent().getStudentId() : null;
