@@ -1,6 +1,8 @@
 package com.wecp.progressive.controller;
 
 import com.wecp.progressive.entity.Course;
+import com.wecp.progressive.entity.Teacher;
+import com.wecp.progressive.repository.TeacherRepository;
 import com.wecp.progressive.service.impl.CourseServiceImplJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/course")
@@ -15,8 +20,10 @@ public class CourseController {
 
     @Autowired
     CourseServiceImplJpa courseServiceImplJpa;
+   @Autowired
+   TeacherRepository teacherRepository;
 
-    @GetMapping
+   @GetMapping
     public ResponseEntity<List<Course>> getAllCourses() {
         try {
             List<Course> courseList = courseServiceImplJpa.getAllCourses();
@@ -41,7 +48,14 @@ public class CourseController {
     @PostMapping
     public ResponseEntity<?> addCourse(@RequestBody Course course) {
         try {
+           
+            Teacher ExistingTreacher=teacherRepository.findByTeacherId(course.getTeacher().getTeacherId());
+            if(course.getTeacher()!=null && course.getTeacher().getTeacherId()!=0)
+            {
+               course.setTeacherId(ExistingTreacher.getTeacherId());
+            }
             int courseId = courseServiceImplJpa.addCourse(course);
+           
             return new ResponseEntity<>(courseId, HttpStatus.CREATED);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

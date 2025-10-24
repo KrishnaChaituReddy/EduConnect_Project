@@ -126,6 +126,17 @@ export class DashboardComponent implements OnInit {
             })
         }
     }
+        deleteStudents(studentId :number): void {
+            if (confirm('Are you sure you want to delete your student')) {
+                this.educonnectService.deleteStudent(studentId).subscribe({
+                    next: () => {
+                        window.location.reload();
+                    },
+                    error: (error) => console.error('Error deleting student:', error)
+    
+                })
+            }
+    }
 
     navigateToEditTeacher(): void {
         this.router.navigate(['educonnect/teacher/edit', this.teacherDetails.teacherId]);

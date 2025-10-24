@@ -20,11 +20,7 @@ export class AuthService {
   };
 
   constructor(private http: HttpClient) { }
-// here form the user.ts it will take the required fields .it means as object it takes
-  // here patital is used beacuse while sending the user object it may have some fields or not . 
-  //if we pass regular object need to send the entire fields . if we use 
-  //partial  type means not need
-  // here it call the backend userlogin controller.
+
 
   login(user: Partial<User>): Observable<{ [key: string]: string }> {
     return this.http.post<{ token: string }>(

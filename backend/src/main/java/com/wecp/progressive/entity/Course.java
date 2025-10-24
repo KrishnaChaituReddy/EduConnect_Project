@@ -19,6 +19,7 @@ private String courseName;
 private String description;
 private int teacherId;
 @ManyToOne(cascade = CascadeType.MERGE)
+
 private Teacher teacher;
 
 
@@ -35,14 +36,8 @@ public Course(int courseId, String courseName, String description, int teacherId
     this.courseName = courseName;
     this.description = description;
     this.teacherId=teacherId;
-    // this.teacher.setTeacherId(teacherId);
+    
 }
-// public Course(int courseId, String courseName, String description, Teacher teacher) {
-//     this.courseId = courseId;
-//     this.courseName = courseName;
-//     this.description = description;
-//     this.teacher = teacher;
-// }
 
 
 public int getCourseId() {
@@ -74,11 +69,10 @@ public int getTeacherId() {
 public void setTeacherId(int teacherId) {
     this.teacherId = teacherId;
 }
-
-
-
-
-
-
-
 }
+
+
+
+
+
+

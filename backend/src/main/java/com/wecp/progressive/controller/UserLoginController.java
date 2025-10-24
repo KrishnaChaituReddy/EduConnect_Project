@@ -39,7 +39,7 @@ public class UserLoginController {
     }
     
 
-    // from the frontned it will extract the username and psswordw
+  
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
         try {
